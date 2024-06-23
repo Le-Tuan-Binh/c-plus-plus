@@ -61,3 +61,19 @@ oz
 ```
 
 Giải thích: Giá trị `111` trong bảng mã Asscii là `o`, nên lúc này `name_string` sẽ có 2 phần tử là `o` và `z`.
+
+#### 1.5 Khai báo chuỗi từ một chuỗi khác
+
+```c++
+string name_string{other_String};
+```
+
+#### 1.6 Khai báo chuỗi từ một chuỗi khác từ vị trí start với number kí tự
+
+```c++
+string name_string {other_string,start,number}
+```
+
+Dưới đây là ví dụ cho cách hoạt động của việc khai báo từ một chuỗi khác với vị trí bắt đầu và số lượng kí tự của chuỗi mới.
+
+![alt text](./images/image_01.png)
