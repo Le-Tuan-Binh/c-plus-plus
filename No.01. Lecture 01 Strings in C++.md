@@ -16,21 +16,47 @@ Lưu ý: Đối với `string`, kí tự cuối cùng của một chuỗi luôn 
 
 #### 1.1 Khai báo chuỗi rỗng
 
+Để khai báo một chuỗi rỗng trong C++, bạn sử dụng cú pháp sau:
+
 ```bash
 string name_string;
 ```
 
+**Giải thích:**
+
+-   std::string: Là lớp chuỗi từ thư viện chuẩn của C++ (string).
+-   name_string: Tên của biến chuỗi bạn đang khai báo.
+-   Khi bạn khai báo như trên, name_string sẽ được khởi tạo là một chuỗi rỗng, tức là không chứa bất kỳ ký tự nào.
+
 #### 1.2 Khai báo chuỗi có giá trị ban đầu
+
+Để khai báo một chuỗi có giá trị ban đầu trong C++, bạn có thể sử dụng cú pháp sau:
 
 ```bash
 string name_string {value}
 ```
 
+**Giải thích:**
+
+-   Trong trường hợp này, name_string sẽ được khởi tạo với giá trị `value`.
+-   Chuỗi name_string sẽ có độ dài bằng độ dài của chuỗi `value`, và chứa các ký tự tương ứng.
+
 #### 1.3 Khai báo chuỗi có giới hạn độ dài với giá trị ban đầu
+
+Đôi khi, bạn có thể muốn khai báo một chuỗi có độ dài tối đa (giới hạn số lượng ký tự) và cũng có giá trị ban đầu. Trong C++, bạn có thể làm như sau:
 
 ```bash
 string name_string {value,max_size};
 ```
+
+**Giải thích:**
+
+-   name_string: Tên của biến chuỗi.
+-   value: Giá trị ban đầu của chuỗi.
+-   max_size: Giới hạn số lượng ký tự tối đa mà chuỗi name_string có thể chứa.
+-   Khi bạn khai báo như trên, chuỗi name_string sẽ có độ dài tối đa là max_size và được khởi tạo với giá trị `value`.
+
+Nếu độ dài của `value` lớn hơn max_size, chỉ số lượng ký tự đầu tiên của `value` sẽ được sao chép vào name_string.
 
 #### 1.4 Khai báo chuỗi với số lần lặp của một kí tự nào đó
 
@@ -68,9 +94,16 @@ Giải thích: Giá trị `111` trong bảng mã Asscii là `o`, nên lúc này 
 
 #### 1.5 Khai báo chuỗi từ một chuỗi khác
 
+Để khai báo một chuỗi từ một chuỗi khác trong C++, bạn có thể sử dụng cú pháp sau:
+
 ```c++
 string name_string{other_String};
 ```
+
+**Giải thích:**
+
+-   name_string: Tên của biến chuỗi mới bạn đang khai báo.
+-   other_String: Chuỗi mà bạn muốn sao chép giá trị từ đó vào name_string.
 
 #### 1.6 Khai báo chuỗi từ một chuỗi khác từ vị trí start với number kí tự
 
