@@ -252,9 +252,9 @@ int main() {
 Đây là giá trị đầu vào và giá trị đầu ra mà ta nhận được từ đoạn chương trình trên
 
 ```bash
-	Input string: 123 Le Tuan Binh
-	The number is: 123
-	The string is:
+Input string: 123 Le Tuan Binh
+The number is: 123
+The string is:
 ```
 
 **Giải thích:**
