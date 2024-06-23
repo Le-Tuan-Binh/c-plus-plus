@@ -77,3 +77,35 @@ string name_string {other_string,start,number}
 Dưới đây là ví dụ cho cách hoạt động của việc khai báo từ một chuỗi khác với vị trí bắt đầu và số lượng kí tự của chuỗi mới.
 
 ![alt text](./images/image_01.png)
+
+Tuy nhiên có một số trường hợp bàn cần phải lưu ý. Đoạn chương trình bên dưới là một trường hợp rất dễ nhầm lẫn trong quá trình sử dụng.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+    string name = "Le Tuan Binh";
+
+    string _pharse{name,5};
+
+    string phrase{"Le Tuan Binh", 5};
+
+    cout<<_pharse<<endl;
+
+    cout<<phrase<<endl;
+}
+```
+
+Bạn có thể thấy khi thực hiện chương trình trên, nhìn thoáng qua ta nghĩ kết quả của chúng có thể như nhau nhưng thực tế thì kết quả có chút khác biệt. Đây là kết quả hiển thị trên màn hình
+
+```bash
+an Binh
+Le Tu
+```
+
+Thật lạ phải không, để giải thích cho việc này chúng ta hãy xem qua đoạn giải thích bên dưới:
+
+-   Đối với `_pharse`, tham số truyền vào là một chuỗi trong một biến, do đó thực hiện lấy hết kí tự từ vị trí 5 trong chuỗi name.
+
+-   Đối với `phrase`, tham số truyền vào hàm là một chuỗi trực tiếp, do đó thực hiện lấy 5 kí tự đầu tiên trong chuỗi name.
