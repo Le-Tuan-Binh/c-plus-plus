@@ -334,3 +334,57 @@ int main(){
 ```bash
 After push back: Hi World!!!:33
 ```
+
+#### 4.3 Hàm pop_back()
+
+Hàm `pop_back()` trong C++ là một hàm thành viên của lớp `std::string`, được sử dụng để loại bỏ ký tự cuối cùng khỏi chuỗi hiện tại.
+
+```c++
+<name_string>.pop_back()
+```
+
+Bạn có thể xem ví dụ của đoạn chương trình sau
+
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string str = "Hello!";
+
+    // Sử dụng hàm pop_back() để loại bỏ ký tự cuối cùng '!'
+    str.pop_back();
+
+    std::cout << "Modified string: " << str << std::endl;
+
+    return 0;
+}
+```
+
+```bash
+Modified string: Hello
+```
+
+Không chỉ thế bạn có thể áp dụng `pop_back` và hàm `back` để có thể thực hiện nhiều yêu cầu phức tạp hơn như đoạn chương trình phía dưới
+
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string str = "Hello, World!";
+
+    // Loại bỏ các ký tự phía sau dấu phẩy ','
+    while (!str.empty() && str.back() != ',') {
+        str.pop_back();
+    }
+
+    std::cout << "Modified string: " << str << std::endl;
+
+    return 0;
+}
+```
+
+```bash
+Modified string: Hello,
+```
