@@ -283,3 +283,54 @@ int main() {
     return 0;
 }
 ```
+
+### 4. Một số hàm thông dụng trong thư viện <string>
+
+#### 4.1 Hàm size() và Hàm length()
+
+Trong thư viện <string> của C++, có nhiều hàm hữu ích để làm việc với chuỗi (std::string). Trong số đó, size() và length() là hai hàm cơ bản cho phép bạn lấy độ dài của chuỗi.
+
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string str = "Hello, World!";
+
+    // Sử dụng hàm size()
+    std::cout << "Length of the string (using size()): " << str.size() << std::endl;
+
+    return 0;
+}
+```
+
+**Lưu ý:**
+
+-   Cả hai hàm size() và length() đều trả về giá trị kiểu size_t, là kiểu dữ liệu không âm được định nghĩa trong C++ để lưu trữ kích thước của các đối tượng.
+-   Bạn có thể sử dụng bất kỳ hàm nào trong hai hàm này để lấy độ dài của chuỗi, và không có sự khác biệt nào về hiệu suất hoặc tính năng giữa chúng.
+
+#### 4.2 Hàm push_back()
+
+Hàm `push_back()` trong C++ là một hàm thành viên của lớp `std::string`, được sử dụng để thêm một ký tự vào cuối chuỗi hiện tại.
+
+```c++
+<name_string>.push_back(<char>)
+```
+
+Bạn có thể xem ví dụ của đoạn chương trình sau
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+    string nameString = "Hi World!!!:3";
+    nameString.push_back('3');
+    cout << "After push back: " << nameString;
+    cout<<endl;
+}
+```
+
+```bash
+After push back: Hi World!!!:33
+```
