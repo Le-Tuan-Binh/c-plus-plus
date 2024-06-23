@@ -413,3 +413,23 @@ int main()
 ```
 
 ![alt text](/images/image_03.png)
+
+Tuy nhiên vẫn còn rất nhiều phiên bản của hàm `insert` mà bạn có thể tìm hiểu và áp dụng, dưới đây là một số phiên bản mà tôi biết
+
+```bash
+std::string& insert(size_t pos, const std::string& str);
+std::string& insert(size_t pos, const std::string& str, size_t subpos, size_t sublen);
+std::string& insert(size_t pos, const char* s);
+std::string& insert(size_t pos, const char* s, size_t n);
+std::string& insert(size_t pos, size_t n, char c);
+```
+
+**Trong đó**
+
+-   pos: Vị trí mà bạn muốn chèn nội dung vào.
+-   str: Chuỗi hoặc phần chuỗi mà bạn muốn chèn vào.
+-   subpos: Vị trí bắt đầu trong str để chèn.
+-   sublen: Số lượng ký tự từ str sẽ được chèn.
+-   s: Một con trỏ `const char*` tới một mảng ký tự mà bạn muốn chèn.
+-   n: Số lượng ký tự từ s sẽ được chèn.
+-   c: Ký tự mà bạn muốn chèn, sẽ được lặp lại n lần.
