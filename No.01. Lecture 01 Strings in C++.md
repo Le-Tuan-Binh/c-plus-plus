@@ -388,3 +388,28 @@ int main() {
 ```bash
 Modified string: Hello,
 ```
+
+#### 4.4 Hàm insert()
+
+Chèn một xâu kí tự vào vị trí bất kì trong xâu ban đầu. Tham số truyền vào là vị trí cần chèn và xâu cần chèn vào trong chuỗi.
+
+```c++
+<name_string>.insert(index,stringInsert)
+```
+
+Bạn có thể tham khảo đoạn chương trình bên dưới để biết cách hoạt động của nó
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    std::string phrase{"We can insert a string."};
+    std::string words{"a string into "};
+    phrase.insert(14, words);
+    cout << phrase;
+}
+```
+
+![alt text](/images/image_03.png)
