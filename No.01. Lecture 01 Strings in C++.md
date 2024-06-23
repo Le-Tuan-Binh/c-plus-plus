@@ -146,3 +146,41 @@ Thật lạ phải không, để giải thích cho việc này chúng ta hãy xe
 -   Đối với `_pharse`, tham số truyền vào là một chuỗi trong một biến, do đó thực hiện lấy hết kí tự từ vị trí 5 trong chuỗi name.
 
 -   Đối với `phrase`, tham số truyền vào hàm là một chuỗi trực tiếp, do đó thực hiện lấy 5 kí tự đầu tiên trong chuỗi name.
+
+### 2. Chuyển đổi string sang chuỗi kí tự
+
+Có 2 cách chuyển đổi một chuỗi dạng string sang chuỗi kí tự trong C, đây chỉ là một trong những cách khuyến khích và đề xuất, các bạn có thể sử dụng các cách dùng khác.
+
+#### 2.1 Sử dụng hàm c_str()
+
+Hàm `c_str()` trả về một con trỏ `const char*` trỏ đến mảng ký tự trong chuỗi std::string. Đây là cách khuyến khích để nhận một phiên bản không thể thay đổi của chuỗi như một mảng ký tự.
+
+```c++
+const char* c_string = name_string.c_str();
+```
+
+**Giải thích:**
+
+-   name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
+-   c_str(): Là phương thức của lớp std::string trả về con trỏ `const char*` tới một mảng ký tự.
+-   c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
+
+**Lưu ý:** Chuỗi trả về từ c_str() là `const char*`, điều này có nghĩa là bạn không thể thay đổi các ký tự trong chuỗi bằng cách sử dụng con trỏ này. Nếu bạn cần thay đổi chuỗi, hãy sao chép nó vào một mảng ký tự mới.
+
+#### 2.2 Sử dụng hàm data()
+
+Hàm `data()` cũng trả về một con trỏ `char*` tới mảng ký tự trong chuỗi `std::string`, nhưng không yêu cầu rằng dữ liệu phải là const, do đó bạn có thể sửa đổi nội dung của chuỗi được trả về.
+
+```c++
+char* c_string = name_string.data();
+```
+
+**Giải thích:**
+
+-   name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
+-   data(): Là phương thức của lớp std::string trả về con trỏ `char*` tới một mảng ký tự.
+-   c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
+
+**Lưu ý:** Với `data()`, bạn có thể thay đổi nội dung của chuỗi thông qua con trỏ `char*` được trả về. Tuy nhiên, bạn cần cẩn thận để đảm bảo rằng chuỗi std::string vẫn tồn tại và không bị hỏng khi thay đổi nội dung bên ngoài.
+
+Trong cả hai trường hợp, bạn cần đảm bảo rằng chuỗi `std::string` mà bạn `đang tham chiếu vẫn tồn tại` khi bạn đang sử dụng con trỏ char* được trả về. Nếu chuỗi std::string bị hủy, con trỏ `char*`sẽ trỏ đến`dữ liệu không hợp lệ`, dẫn đến hành vi không xác định trong chương trình của bạn.
