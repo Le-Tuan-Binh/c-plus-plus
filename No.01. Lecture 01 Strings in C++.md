@@ -66,7 +66,7 @@ string name_string (loop_size,char);
 
 Tuy nhiên bạn cần lưu với phương pháp khai báo chuỗi với số lần lặp của 1 kí tự nào đó ta cần chú ý những điều quan trọng sau
 
-1. Giá trị value phải là kí tự
+**1. Giá trị value phải là kí tự**
 
 ```c++
 string name_string (6,’o’);
@@ -78,7 +78,7 @@ Với đoạn code bên trên ta có được giá trị hiển thị là
 oooooo
 ```
 
-2. Phải sử dụng cặp ngoặc `()`
+**2. Phải sử dụng cặp ngoặc `()`**
 
 ```c++
 string name_string {111,’z’};
