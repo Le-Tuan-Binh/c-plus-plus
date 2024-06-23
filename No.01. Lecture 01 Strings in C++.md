@@ -184,3 +184,81 @@ char* c_string = name_string.data();
 **Lưu ý:** Với `data()`, bạn có thể thay đổi nội dung của chuỗi thông qua con trỏ `char*` được trả về. Tuy nhiên, bạn cần cẩn thận để đảm bảo rằng chuỗi std::string vẫn tồn tại và không bị hỏng khi thay đổi nội dung bên ngoài.
 
 Trong cả hai trường hợp, bạn cần đảm bảo rằng chuỗi `std::string` mà bạn `đang tham chiếu vẫn tồn tại` khi bạn đang sử dụng con trỏ char* được trả về. Nếu chuỗi std::string bị hủy, con trỏ `char*`sẽ trỏ đến`dữ liệu không hợp lệ`, dẫn đến hành vi không xác định trong chương trình của bạn.
+
+### 3. Nhập chuỗi từ bàn phím
+
+#### 3.1 Đối với chuỗi không có khoảng trắng
+
+Sử dụng `std::cin` để nhập chuỗi không chứa khoảng trắng.
+
+Khi sử dụng operator `>>` của `std::cin`, nó chỉ nhận vào một từ đầu tiên cho đến khi gặp khoảng trắng hoặc ký tự newline (\n). Điều này có nghĩa là nếu bạn nhập nhiều từ cùng lúc, chỉ từ đầu tiên sẽ được lưu vào biến chuỗi.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string str;
+    cout << "Input string: ";cin >> str;
+    cout << "The string is: " << str << std::endl;
+    return 0;
+}
+```
+
+#### 3.2 Đối với chuỗi có khoảng trắng
+
+Hàm `std::getline` cho phép bạn nhập một chuỗi từ `std::cin` mà không bị giới hạn bởi khoảng trắng. Đây là một cách hiệu quả để nhận dữ liệu người dùng từ bàn phím.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string str;
+    cout << "Input string: ";
+    getline(cin,str);
+    cout << "The string is: " << str << std::endl;
+    return 0;
+}
+```
+
+**Giải thích:**
+
+-   std::getline(std::cin, str): Hàm này sẽ đọc toàn bộ dòng từ std::cin và lưu vào biến str.
+
+Nó sẽ dừng khi gặp dấu xuống dòng (\n) hoặc khi hết dữ liệu có thể đọc được.
+
+Với việc sử dụng `std::getline`, bạn có thể nhập một chuỗi đầy đủ từ người dùng mà không bị giới hạn bởi khoảng trắng. Điều này giúp đơn giản hóa việc xử lý dữ liệu từ bàn phím khi các dữ liệu đầu vào có thể chứa nhiều từ hay một dòng văn bản.
+
+#### 3.3 Xử lý trôi lệnh trong ngôn ngữ C++
+
+Để hiểu rõ vấn đề, bạn hay xem đoạn chương trình phía dưới, khi chúng ta cố gắng nhập một số và một chuỗi, chương trình sau khi nhận được giá trị số từ người dùng, sẽ không cho phép nhập giá trị chuỗi. Trong C++ nó gọi là trôi lệnh.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    int number; cin >> number;
+    string str;
+    cout << "Input string: ";
+    getline(cin,str);
+    cout<<"The number is: "<<number<<endl;
+    cout<<"The string is: "<<str;
+    return 0;
+}
+```
+
+Đây là giá trị đầu vào và giá trị đầu ra mà ta nhận được từ đoạn chương trình trên
+
+```bash
+	Input string: 123 Le Tuan Binh
+	The number is: 123
+	The string is:
+```
+
+**Giải thích:**
+
+-   Bản chất của hàm getline, nó sẽ dừng đọc chuỗi khi gặp kí tự xuống dòng. Do đó khi sử dụng getline cần luôn đảm bảo trước khi thực hiện getline không còn thừa kí tự enter nào trong bộ nhớ đệm.
+-   Bên cạnh đó, hàm cin sẽ luôn để lại một kí tự xuống dòng trong bộ nhớ đệm của bàn phím.
+-   Vì vậy trước khi sử dụng getline, mà có xuất hiện hàm cin cần phải xử lý kí tự enter đó.
