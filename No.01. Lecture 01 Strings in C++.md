@@ -262,3 +262,24 @@ The string is:
 -   Bản chất của hàm getline, nó sẽ dừng đọc chuỗi khi gặp kí tự xuống dòng. Do đó khi sử dụng getline cần luôn đảm bảo trước khi thực hiện getline không còn thừa kí tự enter nào trong bộ nhớ đệm.
 -   Bên cạnh đó, hàm cin sẽ luôn để lại một kí tự xuống dòng trong bộ nhớ đệm của bàn phím.
 -   Vì vậy trước khi sử dụng getline, mà có xuất hiện hàm cin cần phải xử lý kí tự enter đó.
+
+Bạn có thể xử lý việc này bằng một số phương pháp khác nhau, tuy nhiên bài viết này sẽ đề xuất bạn một phương pháp cơ bản và dễ nhất.
+
+Sử dụng `cin.ignore()` để bỏ qua n kí tự trong bộ đệm bàn phím, với cách này bạn có thể bỏ qua được kí tự mà `cin` để lại trong bộ đệm bàn phím.
+
+```c++
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    int number; cin >> number;
+    cin.ignore(1);
+    string str;
+    cout << "Input string: ";
+    getline(cin,str);
+    cout<<"The number is: "<<number<<endl;
+    cout<<"The string is: "<<str;
+    return 0;
+}
+```
