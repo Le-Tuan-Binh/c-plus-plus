@@ -226,9 +226,9 @@ int main() {
 
 -   std::getline(std::cin, str): Hàm này sẽ đọc toàn bộ dòng từ std::cin và lưu vào biến str.
 
-Nó sẽ dừng khi gặp dấu xuống dòng (\n) hoặc khi hết dữ liệu có thể đọc được.
+-   Nó sẽ dừng khi gặp dấu xuống dòng (\n) hoặc khi hết dữ liệu có thể đọc được.
 
-Với việc sử dụng `std::getline`, bạn có thể nhập một chuỗi đầy đủ từ người dùng mà không bị giới hạn bởi khoảng trắng. Điều này giúp đơn giản hóa việc xử lý dữ liệu từ bàn phím khi các dữ liệu đầu vào có thể chứa nhiều từ hay một dòng văn bản.
+-   Với việc sử dụng `std::getline`, bạn có thể nhập một chuỗi đầy đủ từ người dùng mà không bị giới hạn bởi khoảng trắng. Điều này giúp đơn giản hóa việc xử lý dữ liệu từ bàn phím khi các dữ liệu đầu vào có thể chứa nhiều từ hay một dòng văn bản.
 
 #### 3.3 Xử lý trôi lệnh trong ngôn ngữ C++
 
