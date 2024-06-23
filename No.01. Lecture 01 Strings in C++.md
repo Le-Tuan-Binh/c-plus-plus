@@ -10,6 +10,10 @@ Trong bài viết này sẽ hướng dẫn bạn qua các bước cơ bản đ�
 
 Để sử dụng thư viện `string`, bạn cần include gói thư viện `string` vào chương trình của mình. Dưới đây là một số cách khai báo thường thấy trong quá trình sử dụng chuỗi.
 
+Lưu ý: Đối với `string`, kí tự cuối cùng của một chuỗi luôn luôn là ký tự `NULL`, kí tự này giúp cho ngôn ngữ lập trình biết được đây là `vị trí kết thúc của chuỗi`. Tuy nhiên ta không thể truy cập được kí tự NULL này và các hàm của lớp string cũng đã xử lý triệt để vấn đề này.
+
+![alt text](/images/image_02.png)
+
 #### 1.1 Khai báo chuỗi rỗng
 
 ```bash
