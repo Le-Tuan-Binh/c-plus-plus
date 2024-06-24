@@ -511,3 +511,145 @@ int main()
 ```bash
 Hello. This is my Program
 ```
+
+#### 4.6 Hàm find()
+
+Tìm kiếm một xâu con bất kì trong một xâu khác. Hàm trả về vị trí đầu tiên của xâu cần tìm kiếm trong xâu khác nếu tồn tại. Ngược lại hàm trả về giá trị string::npos.
+
+Hãy xem đoạn chương trình phía dưới để có thể hình dung được cách hoạt động của nó
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string sentence{"Manners maketh man"};
+    string word{"man"};
+    cout << sentence.find(word) << endl; // Outputs 15
+    cout << sentence.find("Ma") << endl; // Outputs 0
+    cout << sentence.find('k') << endl;  // Outputs 10
+    cout << sentence.find('x') << endl;  // Outputs string::npos
+}
+```
+
+-   Tuy nhiên khi thực hiện chạy chương trình, ta nhận được kết quả như sau với giá trị của string::npos là 18446744073709551615.
+-   Trong ngôn ngữ lập trình C++, string::npos được định nghĩa là một giá trị rất lớn có thể được biểu diễn ở kiểu dữ liệu size_t.
+-   Với hệ điều hành 64-bits, giá trị này có thể lên tới 2^64 – 1
+
+Bạn có thể sử dụng string::npos để kiểm tra một chuỗi có xuất hiện trong chuỗi khác hay không bằng cách như sau.
+
+```c++
+if (sentence.find("Hello") == std::string::npos){
+    std::cout << "Character not found" << std::endl;
+} 
+```
+
+Không chỉ thế hàm `find()` còn có rất nhiều cách dùng khác nhau, bạn có thể tìm hiểu thêm về cách dùng hàm `find()` tại đây [std::string::find()](https://cplusplus.com/reference/string/string/find/).
+
+Dưới đây tôi sẽ cùng bạn tìm hiểu về một cách dùng của hàm `find()` như sau
+
+```bash
+find(stringWantToFind,startIndex)
+```
+
+> Tìm kiếm chuỗi từ vị trí startIndex, trả về vị trí xuất hiện đầu tiên của chuỗi cần tìm kiếm, nếu không tìm thấy trả về string::npos.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string sentence{"Manners maketh man"};
+    string word{"man"};
+    std::cout << sentence.find("an", 1) << std::endl;
+    std::cout << sentence.find("an", 3) << std::endl;
+}
+```
+
+```bash
+1
+16
+```
+
+Hãy xem một ứng dụng của hàm `find()` mà chúng ta thường thấy nhất sau đây
+
+> Đếm số lần xuất hiện của một chuỗi nào đó trong chuỗi khác
+> Lưu ý: Các chuỗi con có thể chồng chéo nhau
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    std::string sentence{"Manners maketh man"};
+    std::string word{"an"};
+    int count{};
+    for (size_t i{}; i <= sentence.length() - word.length();)
+    {
+        size_t position = sentence.find(word, i);
+        if (position == std::string::npos)
+            break;
+        ++count;
+        i = position + 1;
+    }
+    std::cout << '"' << word << "\" occurs in \"" << sentence
+              << "\" " << count << " times." << std::endl;
+}
+```
+
+```c++
+find(stringWantToFind,startIndex,numberOfCharacter)
+```
+
+Tìm kiếm numberOfCharacter kí tự tính từ trái sang phải của stringWantToFind bắt đầu từ vị trí startIndex của xâu cần tìm kiếm.
+
+Bạn hãy xem đoạn chương trình tham khảo phía bên dưới
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    std::string sentence{"Manners maketh man"};
+    std::cout << sentence.find("ananas", 8, 2) << std::endl;
+}
+
+```
+
+Giải thích: Tìm kiếm 2 kí tự đầu của “ananas” là “an” trong chuỗi sentence từ vị trí số 8. Kết quả trả ra là 16.
+
+Một số tình huống bạn có thể gặp trong thực tế, hãy cùng tôi xem qua nhé
+
+> Đếm số lần xuất hiện của một chuỗi nào đó trong một chuỗi nào đó, các chuỗi con không thể chồng chéo nhau.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    std::string text; // The string to be searched
+    std::string word; // Substring to be found
+    std::cout << "Enter the string to be searched and press Enter:\n";
+    std::getline(std::cin, text);
+    std::cout << "Enter the string to be found and press Enter:\n";
+    std::getline(std::cin, word);
+    size_t count{}; // Count of substring occurrences
+    size_t index{}; // String index
+    while ((index = text.find(word, index)) != std::string::npos)
+    {
+        ++count;
+        index += word.length(); // Advance by full word (discards overlapping occurrences)
+    }
+    std::cout << "Your text contained " << count << " occurrences of \""
+              << word << "\"." << std::endl;
+}
+```
+
+Bạn có thể xem hình ảnh minh họa phía dưới đây để có thể hiểu rõ cách hoạt động của nó.
+
+![alt text](/images/image_04.png)
