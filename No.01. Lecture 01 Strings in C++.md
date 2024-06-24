@@ -487,3 +487,27 @@ We can insert
 std::string phrase{"We can insert a string."};
 phrase.erase();
 ```
+
+> Đối vối một số yêu cầu trong thực tế, bạn cần xóa tất cả các kí tự nào đó trong chuỗi, đối với ngôn ngữ C++ 20 trở lên có hổ trợ một hàm `erase()` tuy nhiên cách dùng sẽ có chút khác biệt
+>
+> ```c++
+> erase(namestrings,charWantToDelete)
+> ```
+
+Để có thể hình dung được cách hoạt động của nó, đoạn chương trình bên dưới sẽ thể hiện một cách minh họa cách phương thức `erase()` hoạt động
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string s{ "Hello!!!!!. This is my Program!!!"};
+    erase(s, '!');
+    cout << s;
+}
+```
+
+```bash
+Hello. This is my Program
+```
