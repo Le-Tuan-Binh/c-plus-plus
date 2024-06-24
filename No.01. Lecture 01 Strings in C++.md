@@ -600,13 +600,15 @@ int main()
 }
 ```
 
-```c++
+Bên cạnh đó hàm `find()` còn có một cách dùng thường được sử dụng như sau
+
+```bash
 find(stringWantToFind,startIndex,numberOfCharacter)
 ```
 
-Tìm kiếm numberOfCharacter kí tự tính từ trái sang phải của stringWantToFind bắt đầu từ vị trí startIndex của xâu cần tìm kiếm.
+Tìm kiếm `numberOfCharacter` kí tự tính từ `trái sang phải` của `stringWantToFind` `bắt đầu từ vị trí startIndex` của xâu cần tìm kiếm.
 
-Bạn hãy xem đoạn chương trình tham khảo phía bên dưới
+Bạn hãy xem đoạn chương trình tham khảo phía bên dưới để có thể hiểu rõ được cách dùng của nó nhé
 
 ```c++
 #include <iostream>
@@ -620,9 +622,9 @@ int main()
 
 ```
 
-Giải thích: Tìm kiếm 2 kí tự đầu của “ananas” là “an” trong chuỗi sentence từ vị trí số 8. Kết quả trả ra là 16.
+**Giải thích:** Tìm kiếm 2 kí tự đầu của `“ananas”` là `“an”` trong chuỗi sentence từ vị trí số `8`. Kết quả trả ra là `16`.
 
-Một số tình huống bạn có thể gặp trong thực tế, hãy cùng tôi xem qua nhé
+Một số tình huống bạn có thể gặp trong thực tế, hãy cùng tôi xem qua nhé.
 
 > Đếm số lần xuất hiện của một chuỗi nào đó trong một chuỗi nào đó, các chuỗi con không thể chồng chéo nhau.
 
