@@ -433,3 +433,57 @@ std::string& insert(size_t pos, size_t n, char c);
 -   s: Một con trỏ `const char*` tới một mảng ký tự mà bạn muốn chèn.
 -   n: Số lượng ký tự từ s sẽ được chèn.
 -   c: Ký tự mà bạn muốn chèn, sẽ được lặp lại n lần.
+
+#### 4.5 Hàm erase()
+
+Xóa một xâu kí tự từ vị trí bất kì trong xâu ban đầu. Tham số truyền vào là vị trí bắt đầu xía và độ dài của xâu cần xóa.
+
+```c++
+<name_string>.erase(index,lengthWantToDelete)
+```
+
+Để có thể trực quan hơn về cách hoạt động của nó, bạn hãy xem đoạn code phía bên dưới
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    std::string phrase{"We can insert a string."};
+    phrase.erase(13, 2);
+    cout << phrase;
+}
+```
+
+Đoạn chương trình trên thực hiện xóa 2 kí tự tính từ vị trí 13. Do đó kết quả ta nhận được sẽ như bên dưới
+
+```bash
+We can insert string
+```
+
+Tuy nhiên khi sử dụng `erase()` bạn cần chú ý một số vấn đề sau
+
+Lưu ý: Trong các tham số trên không bắt buộc phải truyền vào
+
+-   Nếu chỉ truyền vào 1 tham số, mặc định chương trình sẽ đọc đó là tham số của vị trí index và xóa từ index đến hết chuỗi.
+
+**Ví dụ:**
+
+```c++
+std::string phrase{"We can insert a string."};
+phrase.erase(13);
+```
+
+```bash
+We can insert
+```
+
+-   Nếu không truyền vào tham số nào, mặc định chương trình sẽ hiểu là xóa hết cả chuỗi
+
+**Ví dụ:**
+
+```c++
+std::string phrase{"We can insert a string."};
+phrase.erase();
+```
