@@ -24,9 +24,9 @@ string name_string;
 
 **Giải thích:**
 
--   std::string: Là lớp chuỗi từ thư viện chuẩn của C++ (string).
--   name_string: Tên của biến chuỗi bạn đang khai báo.
--   Khi bạn khai báo như trên, name_string sẽ được khởi tạo là một chuỗi rỗng, tức là không chứa bất kỳ ký tự nào.
+- std::string: Là lớp chuỗi từ thư viện chuẩn của C++ (string).
+- name_string: Tên của biến chuỗi bạn đang khai báo.
+- Khi bạn khai báo như trên, name_string sẽ được khởi tạo là một chuỗi rỗng, tức là không chứa bất kỳ ký tự nào.
 
 #### 1.2 Khai báo chuỗi có giá trị ban đầu
 
@@ -38,8 +38,8 @@ string name_string {value}
 
 **Giải thích:**
 
--   Trong trường hợp này, name_string sẽ được khởi tạo với giá trị `value`.
--   Chuỗi name_string sẽ có độ dài bằng độ dài của chuỗi `value`, và chứa các ký tự tương ứng.
+- Trong trường hợp này, name_string sẽ được khởi tạo với giá trị `value`.
+- Chuỗi name_string sẽ có độ dài bằng độ dài của chuỗi `value`, và chứa các ký tự tương ứng.
 
 #### 1.3 Khai báo chuỗi có giới hạn độ dài với giá trị ban đầu
 
@@ -51,10 +51,10 @@ string name_string {value,max_size};
 
 **Giải thích:**
 
--   name_string: Tên của biến chuỗi.
--   value: Giá trị ban đầu của chuỗi.
--   max_size: Giới hạn số lượng ký tự tối đa mà chuỗi name_string có thể chứa.
--   Khi bạn khai báo như trên, chuỗi name_string sẽ có độ dài tối đa là max_size và được khởi tạo với giá trị `value`.
+- name_string: Tên của biến chuỗi.
+- value: Giá trị ban đầu của chuỗi.
+- max_size: Giới hạn số lượng ký tự tối đa mà chuỗi name_string có thể chứa.
+- Khi bạn khai báo như trên, chuỗi name_string sẽ có độ dài tối đa là max_size và được khởi tạo với giá trị `value`.
 
 Nếu độ dài của `value` lớn hơn max_size, chỉ số lượng ký tự đầu tiên của `value` sẽ được sao chép vào name_string.
 
@@ -102,8 +102,8 @@ string name_string{other_String};
 
 **Giải thích:**
 
--   name_string: Tên của biến chuỗi mới bạn đang khai báo.
--   other_String: Chuỗi mà bạn muốn sao chép giá trị từ đó vào name_string.
+- name_string: Tên của biến chuỗi mới bạn đang khai báo.
+- other_String: Chuỗi mà bạn muốn sao chép giá trị từ đó vào name_string.
 
 #### 1.6 Khai báo chuỗi từ một chuỗi khác từ vị trí start với number kí tự
 
@@ -143,9 +143,9 @@ Le Tu
 
 Thật lạ phải không, để giải thích cho việc này chúng ta hãy xem qua đoạn giải thích bên dưới:
 
--   Đối với `_pharse`, tham số truyền vào là một chuỗi trong một biến, do đó thực hiện lấy hết kí tự từ vị trí 5 trong chuỗi name.
+- Đối với `_pharse`, tham số truyền vào là một chuỗi trong một biến, do đó thực hiện lấy hết kí tự từ vị trí 5 trong chuỗi name.
 
--   Đối với `phrase`, tham số truyền vào hàm là một chuỗi trực tiếp, do đó thực hiện lấy 5 kí tự đầu tiên trong chuỗi name.
+- Đối với `phrase`, tham số truyền vào hàm là một chuỗi trực tiếp, do đó thực hiện lấy 5 kí tự đầu tiên trong chuỗi name.
 
 ### 2. Chuyển đổi string sang chuỗi kí tự
 
@@ -161,9 +161,9 @@ const char* c_string = name_string.c_str();
 
 **Giải thích:**
 
--   name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
--   c_str(): Là phương thức của lớp std::string trả về con trỏ `const char*` tới một mảng ký tự.
--   c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
+- name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
+- c_str(): Là phương thức của lớp std::string trả về con trỏ `const char*` tới một mảng ký tự.
+- c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
 
 **Lưu ý:** Chuỗi trả về từ c_str() là `const char*`, điều này có nghĩa là bạn không thể thay đổi các ký tự trong chuỗi bằng cách sử dụng con trỏ này. Nếu bạn cần thay đổi chuỗi, hãy sao chép nó vào một mảng ký tự mới.
 
@@ -177,9 +177,9 @@ char* c_string = name_string.data();
 
 **Giải thích:**
 
--   name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
--   data(): Là phương thức của lớp std::string trả về con trỏ `char*` tới một mảng ký tự.
--   c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
+- name_string: Là chuỗi std::string mà bạn muốn chuyển đổi.
+- data(): Là phương thức của lớp std::string trả về con trỏ `char*` tới một mảng ký tự.
+- c_string: Là con trỏ trỏ đến mảng ký tự của chuỗi name_string.
 
 **Lưu ý:** Với `data()`, bạn có thể thay đổi nội dung của chuỗi thông qua con trỏ `char*` được trả về. Tuy nhiên, bạn cần cẩn thận để đảm bảo rằng chuỗi std::string vẫn tồn tại và không bị hỏng khi thay đổi nội dung bên ngoài.
 
@@ -224,11 +224,11 @@ int main() {
 
 **Giải thích:**
 
--   std::getline(std::cin, str): Hàm này sẽ đọc toàn bộ dòng từ std::cin và lưu vào biến str.
+- std::getline(std::cin, str): Hàm này sẽ đọc toàn bộ dòng từ std::cin và lưu vào biến str.
 
--   Nó sẽ dừng khi gặp dấu xuống dòng (\n) hoặc khi hết dữ liệu có thể đọc được.
+- Nó sẽ dừng khi gặp dấu xuống dòng (\n) hoặc khi hết dữ liệu có thể đọc được.
 
--   Với việc sử dụng `std::getline`, bạn có thể nhập một chuỗi đầy đủ từ người dùng mà không bị giới hạn bởi khoảng trắng. Điều này giúp đơn giản hóa việc xử lý dữ liệu từ bàn phím khi các dữ liệu đầu vào có thể chứa nhiều từ hay một dòng văn bản.
+- Với việc sử dụng `std::getline`, bạn có thể nhập một chuỗi đầy đủ từ người dùng mà không bị giới hạn bởi khoảng trắng. Điều này giúp đơn giản hóa việc xử lý dữ liệu từ bàn phím khi các dữ liệu đầu vào có thể chứa nhiều từ hay một dòng văn bản.
 
 #### 3.3 Xử lý trôi lệnh trong ngôn ngữ C++
 
@@ -259,9 +259,9 @@ The string is:
 
 **Giải thích:**
 
--   Bản chất của hàm getline, nó sẽ dừng đọc chuỗi khi gặp kí tự xuống dòng. Do đó khi sử dụng getline cần luôn đảm bảo trước khi thực hiện getline không còn thừa kí tự enter nào trong bộ nhớ đệm.
--   Bên cạnh đó, hàm cin sẽ luôn để lại một kí tự xuống dòng trong bộ nhớ đệm của bàn phím.
--   Vì vậy trước khi sử dụng getline, mà có xuất hiện hàm cin cần phải xử lý kí tự enter đó.
+- Bản chất của hàm getline, nó sẽ dừng đọc chuỗi khi gặp kí tự xuống dòng. Do đó khi sử dụng getline cần luôn đảm bảo trước khi thực hiện getline không còn thừa kí tự enter nào trong bộ nhớ đệm.
+- Bên cạnh đó, hàm cin sẽ luôn để lại một kí tự xuống dòng trong bộ nhớ đệm của bàn phím.
+- Vì vậy trước khi sử dụng getline, mà có xuất hiện hàm cin cần phải xử lý kí tự enter đó.
 
 Bạn có thể xử lý việc này bằng một số phương pháp khác nhau, tuy nhiên bài viết này sẽ đề xuất bạn một phương pháp cơ bản và dễ nhất.
 
@@ -306,8 +306,8 @@ int main() {
 
 **Lưu ý:**
 
--   Cả hai hàm size() và length() đều trả về giá trị kiểu size_t, là kiểu dữ liệu không âm được định nghĩa trong C++ để lưu trữ kích thước của các đối tượng.
--   Bạn có thể sử dụng bất kỳ hàm nào trong hai hàm này để lấy độ dài của chuỗi, và không có sự khác biệt nào về hiệu suất hoặc tính năng giữa chúng.
+- Cả hai hàm size() và length() đều trả về giá trị kiểu size_t, là kiểu dữ liệu không âm được định nghĩa trong C++ để lưu trữ kích thước của các đối tượng.
+- Bạn có thể sử dụng bất kỳ hàm nào trong hai hàm này để lấy độ dài của chuỗi, và không có sự khác biệt nào về hiệu suất hoặc tính năng giữa chúng.
 
 #### 4.2 Hàm push_back()
 
@@ -426,13 +426,13 @@ std::string& insert(size_t pos, size_t n, char c);
 
 **Trong đó**
 
--   pos: Vị trí mà bạn muốn chèn nội dung vào.
--   str: Chuỗi hoặc phần chuỗi mà bạn muốn chèn vào.
--   subpos: Vị trí bắt đầu trong str để chèn.
--   sublen: Số lượng ký tự từ str sẽ được chèn.
--   s: Một con trỏ `const char*` tới một mảng ký tự mà bạn muốn chèn.
--   n: Số lượng ký tự từ s sẽ được chèn.
--   c: Ký tự mà bạn muốn chèn, sẽ được lặp lại n lần.
+- pos: Vị trí mà bạn muốn chèn nội dung vào.
+- str: Chuỗi hoặc phần chuỗi mà bạn muốn chèn vào.
+- subpos: Vị trí bắt đầu trong str để chèn.
+- sublen: Số lượng ký tự từ str sẽ được chèn.
+- s: Một con trỏ `const char*` tới một mảng ký tự mà bạn muốn chèn.
+- n: Số lượng ký tự từ s sẽ được chèn.
+- c: Ký tự mà bạn muốn chèn, sẽ được lặp lại n lần.
 
 #### 4.5 Hàm erase()
 
@@ -466,7 +466,7 @@ Tuy nhiên khi sử dụng `erase()` bạn cần chú ý một số vấn đề 
 
 Lưu ý: Trong các tham số trên không bắt buộc phải truyền vào
 
--   Nếu chỉ truyền vào 1 tham số, mặc định chương trình sẽ đọc đó là tham số của vị trí index và xóa từ index đến hết chuỗi.
+- Nếu chỉ truyền vào 1 tham số, mặc định chương trình sẽ đọc đó là tham số của vị trí index và xóa từ index đến hết chuỗi.
 
 **Ví dụ:**
 
@@ -479,7 +479,7 @@ phrase.erase(13);
 We can insert
 ```
 
--   Nếu không truyền vào tham số nào, mặc định chương trình sẽ hiểu là xóa hết cả chuỗi
+- Nếu không truyền vào tham số nào, mặc định chương trình sẽ hiểu là xóa hết cả chuỗi
 
 **Ví dụ:**
 
@@ -533,9 +533,9 @@ int main()
 }
 ```
 
--   Tuy nhiên khi thực hiện chạy chương trình, ta nhận được kết quả như sau với giá trị của string::npos là 18446744073709551615.
--   Trong ngôn ngữ lập trình C++, string::npos được định nghĩa là một giá trị rất lớn có thể được biểu diễn ở kiểu dữ liệu size_t.
--   Với hệ điều hành 64-bits, giá trị này có thể lên tới 2^64 – 1
+- Tuy nhiên khi thực hiện chạy chương trình, ta nhận được kết quả như sau với giá trị của string::npos là 18446744073709551615.
+- Trong ngôn ngữ lập trình C++, string::npos được định nghĩa là một giá trị rất lớn có thể được biểu diễn ở kiểu dữ liệu size_t.
+- Với hệ điều hành 64-bits, giá trị này có thể lên tới 2^64 – 1
 
 Bạn có thể sử dụng string::npos để kiểm tra một chuỗi có xuất hiện trong chuỗi khác hay không bằng cách như sau.
 
