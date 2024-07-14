@@ -15,7 +15,7 @@ Trong C++, một con trỏ hàm có thể được khai báo để trỏ tới m
 Dưới đây là một ví dụ về khai báo một con trỏ hàm trỏ tới một hàm nhận một int và trả về một bool:
 
 ```c++
-	typedef bool (*funcPtr)(int value)
+typedef bool (*funcPtr)(int value)
 ```
 
 Ở đây ta có thể không khái báo từ khóa `typedef` tuy nhiên, việc sử dụng `typedef` trong trường hợp này giúp cho ta dễ sử dụng và quản lý con trỏ hơn.
