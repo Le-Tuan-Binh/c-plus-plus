@@ -196,7 +196,7 @@ tuple<bool, int, int, string>
 
 Ở đây tôi chỉ hiển thị việc xây dựng hàm, việc còn lại kiểm tra cho từng yêu cầu bạn cần phải tự triển khai theo mong muốn và ý tưởng của bạn nhé.
 
-```c++
+```c
 tuple<bool, int, int, string> parse(string buffer) {
 	bool success = true;
 	int data = 0;
@@ -205,18 +205,18 @@ tuple<bool, int, int, string> parse(string buffer) {
 
 	/* Kiểm tra chuỗi rỗng */
 	if (buffer.length() == 0) {
-	  success = false;
-	  errorCode = IntegerParseErrorCode::EmptyInput;
-	  message = "Input cannot be empty";
+		success = false;
+		errorCode = IntegerParseErrorCode::EmptyInput;
+		message = "Input cannot be empty";
 	}
 
 	/* Kiểm tra chuỗi chỉ có kí tự số */
 	regex integerPattern(R"(^-?\d+$)");
-    if (!regex_match(buffer, integerPattern)) {
-      success = false;
-      errorCode = IntegerParseErrorCode::InvalidFormat;
-      message = "Invalid format. Expected an integer.";
-    }
+	if (!regex_match(buffer, integerPattern)) {
+		success = false;
+		errorCode = IntegerParseErrorCode::InvalidFormat;
+		message = "Invalid format. Expected an integer.";
+	}
 	auto result = make_tuple(success, data, errorCode, message);
 	return result;	
 }
