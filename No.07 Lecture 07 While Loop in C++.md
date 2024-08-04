@@ -108,3 +108,15 @@ Sử dụng cặp dấu ngoặc nhọn này là một cách để kiểm soát p
 Vòng lặp do-while tương tự như vòng lặp while ở chỗ nó tiếp tục thực hiện khi điều kiện của vòng lặp còn đúng. Tuy nhiên, điểm khác biệt chính là điều kiện của vòng lặp do-while được kiểm tra sau mỗi lần thực hiện vòng lặp, điều này có nghĩa là đoạn mã trong vòng lặp do-while sẽ luôn được thực hiện ít nhất một lần, bất kể điều kiện ban đầu có đúng hay không.
 
 ![alt text](/images/image-07.png)
+
+```c++
+#include <iostream>
+int main() {
+    int i = 0;
+    do {
+        std::cout << "i = " << i << std::endl;
+        ++i;
+    } while (i < 5);
+    return 0;
+}
+```
