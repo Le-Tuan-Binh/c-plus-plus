@@ -71,9 +71,9 @@ i: 4, j: 6
 ```
 
 **Giải thích**
-**Giá trị khởi tạo:** Trong phần đầu tiên của biểu thức điều khiển vòng lặp, chúng ta định nghĩa và khởi tạo hai biến i và j. Biến i được khởi tạo là 0 và biến j được khởi tạo là 10.
-**Điều kiện dừng:** Điều kiện để tiếp tục vòng lặp là i < j. Vòng lặp sẽ tiếp tục chạy miễn là điều kiện này đúng.
-**Biến nhảy của vòng lặp:** Trong phần cuối của biểu thức điều khiển vòng lặp, chúng ta tăng biến i lên 1 và giảm biến j xuống 1 sau mỗi lần lặp.
+- **Giá trị khởi tạo:** Trong phần đầu tiên của biểu thức điều khiển vòng lặp, chúng ta định nghĩa và khởi tạo hai biến i và j. Biến i được khởi tạo là 0 và biến j được khởi tạo là 10.
+- **Điều kiện dừng:** Điều kiện để tiếp tục vòng lặp là i < j. Vòng lặp sẽ tiếp tục chạy miễn là điều kiện này đúng.
+- **Biến nhảy của vòng lặp:** Trong phần cuối của biểu thức điều khiển vòng lặp, chúng ta tăng biến i lên 1 và giảm biến j xuống 1 sau mỗi lần lặp.
 
 ### 3. Range-Based For Loop
 

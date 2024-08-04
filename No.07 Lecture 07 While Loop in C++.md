@@ -27,7 +27,7 @@ int main() {
 ```
 
 **Giải thích:**
-Khởi tạo biến đếm, chúng ta khởi tạo một biến i với giá trị ban đầu là 1.
-Điều kiện của vòng lặp: vòng lặp sẽ tiếp tục thực hiện miễn là giá trị của i nhỏ hơn hoặc bằng 5.
-Thân vòng lặp trong mỗi lần lặp, giá trị của i được in ra màn hình.
-Tăng giá trị của i: sau mỗi lần lặp, giá trị của i được tăng lên 1.
+- Khởi tạo biến đếm, chúng ta khởi tạo một biến i với giá trị ban đầu là 1.
+- Điều kiện của vòng lặp: vòng lặp sẽ tiếp tục thực hiện miễn là giá trị của i nhỏ hơn hoặc bằng 5.
+- Thân vòng lặp trong mỗi lần lặp, giá trị của i được in ra màn hình.
+- Tăng giá trị của i: sau mỗi lần lặp, giá trị của i được tăng lên 1.
