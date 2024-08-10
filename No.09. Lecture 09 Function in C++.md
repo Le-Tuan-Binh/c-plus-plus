@@ -78,3 +78,31 @@ Value of a after calling increaseByFive: 10
 Truyền tham số theo giá trị (pass-by-value) là cơ chế mặc định bằng cách nào đối số được truyền vào một hàm. Nó cung cấp nhiều bảo mật cho hàm gọi bằng cách ngăn hàm đó sửa đổi các biến thuộc về hàm gọi. Tuy nhiên, đôi khi bạn muốn sửa đổi các giá trị trong hàm gọi. Có cách nào để thực hiện điều đó khi bạn cần không?
 
 #### 2.2 Pass-By-Reference
+
+Bạn cũng có thể chỉ định một tham số hàm dưới dạng tham chiếu, trong trường hợp đó hàm sẽ sử dụng cơ chế truyền theo tham chiếu với đối số. 
+
+Khi hàm được gọi, một đối số tương ứng với tham số tham chiếu không bị sao chép. Thay vào đó, tham số tham chiếu được khởi tạo với đối số. Bất cứ nơi nào tên tham số được sử dụng trong thân hàm, nó như thể truy cập giá trị của đối số trong hàm gọi trực tiếp.
+
+Bạn chỉ định kiểu tham chiếu bằng cách thêm **&** sau tên kiểu. Gọi một hàm có tham số tham chiếu không khác gì việc gọi một hàm mà đối số được truyền theo giá trị. 
+
+Tuy nhiên, việc sử dụng tham chiếu cải thiện hiệu suất với các đối tượng như kiểu chuỗi (string). Cơ chế truyền theo giá trị sao chép đối tượng, điều này sẽ tiêu tốn cả thời gian và bộ nhớ với một chuỗi dài. Với tham số tham chiếu, không có việc sao chép.
+
+### 3 Giá trị mặc định của tham số truyền vào hàm
+
+Có nhiều tình huống mà việc có các giá trị đối số mặc định cho một hoặc nhiều tham số hàm sẽ rất hữu ích. Điều này cho phép bạn chỉ định một giá trị đối số chỉ khi bạn muốn điều gì đó khác với giá trị mặc định.
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+void displayMessage(const string& message = "Default Error Message") {
+    cout << message << endl;
+}
+int main() {
+    displayMessage();
+    displayMessage("Custom Error Message");
+    return 0;
+}
+```
+
+Tất cả các tham số hàm có giá trị mặc định phải được đặt cùng nhau ở cuối danh sách tham số. Khi một đối số bị bỏ qua trong một lệnh gọi hàm, tất cả các đối số tiếp theo trong danh sách cũng phải bị bỏ qua. Do đó, các tham số có giá trị mặc định nên được sắp xếp từ ít có khả năng bị bỏ qua nhất đến nhiều khả năng bị bỏ qua nhất ở cuối. Những quy tắc này là cần thiết để trình biên dịch có thể xử lý các lệnh gọi hàm.
