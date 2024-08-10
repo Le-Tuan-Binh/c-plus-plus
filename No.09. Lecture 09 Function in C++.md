@@ -106,3 +106,51 @@ int main() {
 ```
 
 Tất cả các tham số hàm có giá trị mặc định phải được đặt cùng nhau ở cuối danh sách tham số. Khi một đối số bị bỏ qua trong một lệnh gọi hàm, tất cả các đối số tiếp theo trong danh sách cũng phải bị bỏ qua. Do đó, các tham số có giá trị mặc định nên được sắp xếp từ ít có khả năng bị bỏ qua nhất đến nhiều khả năng bị bỏ qua nhất ở cuối. Những quy tắc này là cần thiết để trình biên dịch có thể xử lý các lệnh gọi hàm.
+
+### 4. Biền Static trong hàm
+
+Trong các hàm bạn đã thấy cho đến nay, không có gì được lưu giữ trong thân hàm từ lần thực thi này sang lần thực thi tiếp theo. Giả sử bạn muốn đếm số lần một hàm đã được gọi. Làm thế nào để bạn thực hiện điều đó? Một cách là định nghĩa một biến ở phạm vi global và tăng giá trị của nó từ bên trong hàm. 
+
+Một vấn đề tiềm ẩn với cách này là bất kỳ hàm nào trong tệp có thể sửa đổi biến, vì vậy bạn không thể đảm bảo rằng nó chỉ được tăng lên khi cần thiết.
+
+Một giải pháp tốt hơn là định nghĩa một biến trong thân hàm dưới dạng **static**. Một biến static mà bạn định nghĩa trong một hàm được tạo ra lần đầu tiên khi định nghĩa của nó được thực thi. Sau đó, nó tiếp tục tồn tại cho đến khi **chương trình kết thúc**. 
+
+Điều này có nghĩa là bạn có thể giữ lại giá trị từ lần gọi hàm này sang lần gọi tiếp theo. Để chỉ định một biến là static, bạn thêm từ khóa static vào trước tên kiểu trong định nghĩa. 
+
+Bạn hãy xem xét ví dụ bên dưới
+
+```c++
+#include <iostream>
+using namespace std;
+long long nextIntegerForGroupOne() {
+	static long long count{ 0 };
+	return ++count;
+}
+long long nextIntegerForGroupTwo() {
+	static long long count{ 0 };
+	return ++count;
+}
+long long nextIntegerForGroupThree() {
+	static long long count{ 0 };
+	return ++count;
+}
+int main() {
+	cout << nextIntegerForGroupOne() << endl;
+	cout << nextIntegerForGroupOne() << endl;
+	cout << nextIntegerForGroupTwo() << endl;
+	cout << nextIntegerForGroupThree() << endl;
+	cout << nextIntegerForGroupTwo() << endl;
+	cout << nextIntegerForGroupThree() << endl;
+	return 0;
+}
+```
+
+Kết quả ta nhận được trên màn hình là 
+```bash
+1
+2
+1
+1
+2
+2
+```
