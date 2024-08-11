@@ -132,7 +132,6 @@ int main() {
     stringstream ss;
     ss << num;
     string strNum = ss.str();
-	/* Reset the StringStream */
     ss.str("");  
     ss.clear();
     ss << pi;
