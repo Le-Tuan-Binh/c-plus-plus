@@ -176,6 +176,118 @@ int main() {
 }
 ```
 
+##### 2.2.2. Sử dụng stringstream
+
+Giống như chuyển đổi số thành chuỗi, bạn cũng có thể sử dụng std::stringstream để chuyển đổi chuỗi thành số.
+
+```c++
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    string strNum = "42";
+    string strPi = "3.14159";
+    
+    stringstream ss;
+    ss << strNum;
+    int num;
+    ss >> num;
+    
+    ss.str("");
+    ss.clear();
+
+    ss << strPi;
+    double pi;
+    ss >> pi;
+    
+    cout << "Number: " << num << endl;
+    cout << "Pi: " << pi << endl;
+    
+    return 0;
+}
+```
+
+**Giải thích:**
+
+- **stringstream ss(strNum);** khởi tạo một đối tượng stringstream từ chuỗi strNum.
+
+- **ss >> num;** chuyển chuỗi strNum thành số và gán cho num.
+
 ### 3. String concatenation
 
+Nối chuỗi là một trong những thao tác cơ bản và thường xuyên được sử dụng khi làm việc với chuỗi trong lập trình. Nó cho phép bạn kết hợp hai hoặc nhiều chuỗi lại với nhau để tạo thành một chuỗi mới. Trong C++, có nhiều cách khác nhau để thực hiện việc nối chuỗi, từ các toán tử đơn giản cho đến các phương pháp tối ưu hóa hiệu suất.
+
+#### 3.1. Sử dụng toán tử +
+
+Cách đơn giản và phổ biến nhất để nối hai chuỗi trong C++ là sử dụng toán tử +. Toán tử này tạo ra một chuỗi mới bằng cách nối chuỗi phía bên trái với chuỗi phía bên phải.
+
+```c++
+#include <iostream>
+using namespace std;
+int main() {
+    string str1 = "Hello, ";
+    string str2 = "world!";
+    string result = str1 + str2;
+    cout << result << endl;  
+    return 0;
+}
+```
+
+#### 3.2. Sử dụng std::stringstream để nối nhiều chuỗi
+
+Khi cần nối nhiều chuỗi lại với nhau, đặc biệt trong vòng lặp hoặc khi làm việc với số lượng lớn chuỗi, sử dụng std::stringstream có thể là một lựa chọn hiệu quả hơn so với các phương pháp khác. std::stringstream hoạt động giống như một bộ đệm, giúp tránh việc tạo ra nhiều chuỗi trung gian.
+
+```c++
+#include <iostream>
+#include <sstream>
+using namespace std;
+int main() {
+    string str1 = "Hello";
+    string str2 = ", ";
+    string str3 = "world";
+    string str4 = "!";
+    stringstream ss;
+    ss << str1 << str2 << str3 << str4;
+    string result = ss.str();
+    cout << result << endl;  
+    return 0;
+}
+```
+
+**Giải thích:**
+
+- **stringstream ss;** khởi tạo một đối tượng stringstream.
+
+- **ss << str1 << str2 << str3 << str4;** nối các chuỗi str1, str2, str3, và str4 lại với nhau trong stringstream.
+
+- **ss.str();** trả về chuỗi kết quả.
+
+Phương pháp này giúp bạn nối nhiều chuỗi mà không cần tạo ra nhiều chuỗi trung gian, giúp tiết kiệm bộ nhớ và tối ưu hóa hiệu suất.
+
 ### 4. String Pluralization
+
+Đa dạng hóa số lượng từ (Pluralization) là một khái niệm quan trọng trong việc xử lý chuỗi, đặc biệt là khi bạn cần phải hiển thị các thông điệp hoặc nội dung có liên quan đến số lượng. Ví dụ, bạn có thể muốn hiển thị "1 item" nếu số lượng là 1, nhưng hiển thị "2 items" nếu số lượng lớn hơn 1. Việc này đòi hỏi bạn phải xử lý chuỗi để thêm phần kết thúc phù hợp với từ (thường là thêm "s" trong tiếng Anh).
+
+```c++
+#include <sstream>
+#include <string>
+using namespace std;
+string pluralize(int count, string singular, string plural) {
+    stringstream builder;
+    builder << count << " ";  
+    if (count <= 1) {
+        builder << singular;
+    } else {
+        builder << plural;
+    }
+    string result = builder.str();
+    return result;
+}
+int main() {
+    int itemCount = 5;
+    string message = "You have " + pluralize(itemCount, "item", "items") + " in your cart.";
+    cout << message << endl;  
+    return 0;
+}
+```
