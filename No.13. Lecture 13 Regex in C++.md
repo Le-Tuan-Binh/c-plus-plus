@@ -4,6 +4,76 @@ Regular Expressions (regex) là một công cụ mạnh mẽ để tìm kiếm v
 
 ## Getting Involved
 
+### 0. Một số hàm thông dụng trong regex
+
+#### std::regex_match
+
+Kiểm tra xem toàn bộ chuỗi có khớp với biểu thức chính quy không.
+
+```bash
+bool regex_match(const std::string& str, const std::regex& pattern);
+```
+
+```c++
+#include <iostream>
+#include <regex>
+int main() {
+    std::string text = "hello";
+    std::regex pattern("hello");
+    if (std::regex_match(text, pattern)) {
+        std::cout << "Match found!" << std::endl;
+    } else {
+        std::cout << "No match found." << std::endl;
+    }
+    return 0;
+}
+```
+
+#### std::regex_search
+
+Tìm kiếm một phần của chuỗi có khớp với biểu thức chính quy.
+
+```bash
+bool regex_search(const std::string& str, std::smatch& match, const std::regex& pattern);
+```
+
+```c++
+#include <iostream>
+#include <regex>
+int main() {
+    std::string text = "hello world";
+    std::regex pattern("world");
+    std::smatch match;
+    if (std::regex_search(text, match, pattern)) {
+        std::cout << "Match found: " << match.str() << std::endl;
+    } else {
+        std::cout << "No match found." << std::endl;
+    }
+    return 0;
+}
+```
+
+#### std::regex_replace
+
+Thay thế các phần của chuỗi khớp với biểu thức chính quy bằng một chuỗi khác.
+
+```bash
+std::string regex_replace(const std::string& str, const std::regex& pattern, const std::string& replacement);
+```
+
+```c++
+#include <iostream>
+#include <regex>
+int main() {
+    std::string text = "hello world";
+    std::regex pattern("world");
+    std::string replacement = "universe";
+    std::string result = std::regex_replace(text, pattern, replacement);
+    std::cout << "Result: " << result << std::endl;
+    return 0;
+}
+```
+
 ### 1. Kiểm tra Định dạng Email
 
 Để kiểm tra xem một chuỗi có phải là địa chỉ email hợp lệ không, bạn có thể sử dụng regex.
@@ -83,3 +153,98 @@ int main() {
     return 0;
 }
 ```
+### 3. Kiểm tra chuỗi chỉ chứa toàn số
+
+**Giải thích:**
+
+- **R"(\d+)"** là biểu thức chính quy kiểm tra chuỗi chỉ chứa các chữ số.
+
+- **std::regex_match** kiểm tra xem chuỗi text có toàn chữ số không.
+
+```c++
+#include <iostream>
+#include <regex>
+bool isNumeric(const std::string& text) {
+    std::string pattern = R"(\d+)";
+    bool matched = std::regex_match(text, std::regex(pattern));
+    return matched;
+}
+int main() {
+    std::string text1 = "12345";
+    std::string text2 = "123a5";
+
+    std::cout << text1 << " is numeric: " << isNumeric(text1) << std::endl;  
+    std::cout << text2 << " is numeric: " << isNumeric(text2) << std::endl;  
+    return 0;
+}
+```
+
+### 4. Kiểm tra đường dẫn url
+
+```c++
+#include <iostream>
+#include <regex>
+bool isValidURL(const std::string& url) {
+    std::regex urlPattern(R"(https?:\/\/(www\.)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,})");
+    return std::regex_match(url, urlPattern);
+}
+int main() {
+    std::string url = "https://www.example.com";
+    if (isValidURL(url)) {
+        std::cout << url << " is a valid URL." << std::endl;
+    } else {
+        std::cout << url << " is not a valid URL." << std::endl;
+    }
+    return 0;
+}
+```
+
+**Giải thích:**
+
+- **R"(https?:\/\/(www\.)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,})"** là biểu thức chính quy kiểm tra định dạng URL.
+
+- **https?** cho phép http hoặc https.
+
+- **\/\/** là dấu phân cách trong URL.
+
+- **(www\.)?** là phần tùy chọn www.
+
+- **[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}** là tên miền với phần mở rộng.
+
+### 5. Tìm tất cả các số trong chuỗi
+
+```c++
+#include <iostream>
+#include <regex>
+#include <string>
+#include <vector>
+std::vector<std::string> findNumbers(const std::string& text) {
+    std::vector<std::string> numbers;
+    std::regex numberPattern(R"(\d+)");
+    auto numbersBegin = std::sregex_iterator(text.begin(), text.end(), numberPattern);
+    auto numbersEnd = std::sregex_iterator();
+    for (std::sregex_iterator i = numbersBegin; i != numbersEnd; ++i) {
+        std::smatch match = *i;
+        numbers.push_back(match.str());
+    }
+    return numbers;
+}
+int main() {
+    std::string text = "There are 2 apples and 10 oranges.";
+    std::vector<std::string> numbers = findNumbers(text);
+    std::cout << "Numbers found: ";
+    for (const std::string& num : numbers) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+**Giải thích:**
+
+- **R"(\d+)"** là biểu thức chính quy tìm các số (một hoặc nhiều chữ số liên tiếp).
+
+- **std::sregex_iterator** được sử dụng để lặp qua tất cả các kết quả tìm được.
+
+Các số tìm được được lưu vào vector numbers.
