@@ -319,3 +319,44 @@ Pi: -------3
 Pi: ----3.14
 Pi: --3.1416
 ```
+
+**Using Variables in Format Specifiers**
+
+Khi chúng ta có một trình chỉ định định dạng trong một trình giữ chỗ, đôi khi chúng ta có thể lồng thêm nhiều trình giữ chỗ khác vào trong đó.
+
+Điều này cho phép các trình chỉ định định dạng của biến của chúng ta tự sử dụng các biến.
+
+Dưới đây, chúng ta nội suy đối số ở chỉ mục 0 (tức là số nguyên 3) vào chuỗi của chúng ta, đặt chiều rộng tối thiểu cho đối số ở chỉ mục 1 (tức là số nguyên 4):
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  std::string Number{
+    std::format("I have {0:{1}} apples", 3, 4)};
+
+  std::cout << Number;
+}
+```
+
+```bash
+I have    3 apples
+```
+
+Các đối số vị trí là tùy chọn ở đây. Khi bị bỏ qua, các vị trí sẽ được suy ra dựa trên vị trí của `{` mở đầu của mỗi chỗ giữ chỗ:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  std::string Number{
+    std::format("I have {:{}} apples", 3, 4)};
+  std::cout << Number;
+}
+```
+
+```bash
+I have    3 apples
+```
