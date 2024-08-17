@@ -147,3 +147,56 @@ int main(){
 	std::cout << Number;
 }
 ```
+
+**Minimum Width Formatting**
+
+Việc truyền một số nguyên dương đơn giản làm trình chỉ định định dạng sẽ đặt chiều rộng tối thiểu của giá trị đó trong chuỗi.
+
+Ví dụ, chèn một số nguyên như 3 vào chuỗi chỉ cần một khoảng trắng. Nhưng nếu chúng ta đặt chiều rộng tối thiểu là 6, thì sẽ thêm khoảng trắng để đảm bảo biến của chúng ta sử dụng ít nhất 6 ký tự:
+
+```C++
+#include <format>
+#include <iostream>
+int main(){
+	std::string Fruit{std::format("I have {:6} apples", 3)};
+	std::cout << Fruit;
+}
+```
+Các chỉ định về chiều rộng tối thiểu và căn chỉnh chủ yếu hữu ích khi chúng ta xuất nhiều dòng văn bản.
+
+Ví dụ, nếu chúng ta đang cố gắng tạo một bảng, chúng ta sẽ muốn các cột của mình được căn chỉnh theo chiều dọc. Việc thiết lập chiều rộng tối thiểu có thể giúp chúng ta đạt được điều đó.
+
+Dưới đây, chúng ta sử dụng các chỉ định này để tạo một bảng gồm 3 cột, với chiều rộng lần lượt là 8, 5 và 6:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  std::cout
+    << std::format(
+      "{:8} | {:5} | {:6} |",
+      "Item", "Sales", "Profit")
+
+    << std::format(
+      "\n{:8} | {:5} | {:6} |",
+      "Apples", 53, 8.21)
+
+    << std::format(
+      "\n{:8} | {:5} | {:6} |",
+      "Bananas", 194, 33.89)
+
+    << std::format(
+      "\n{:8} | {:5} | {:6} |",
+      "Pears", 213, 106.35);
+}
+```
+
+Kết quả ta nhận được là
+
+```bash
+Item     | Sales | Profit |
+Apples   |    53 |   8.21 |
+Bananas  |   194 |  33.89 |
+Pears    |   213 | 106.35 |
+```
