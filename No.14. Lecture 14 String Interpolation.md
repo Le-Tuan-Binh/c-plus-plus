@@ -200,3 +200,122 @@ Apples   |    53 |   8.21 |
 Bananas  |   194 |  33.89 |
 Pears    |   213 | 106.35 |
 ```
+
+**Alignment and Fill Formatting**
+
+Khi biến của chúng ta là một số nguyên, chúng ta có thể thêm tiền tố 0 vào giá trị chiều rộng tối thiểu. Điều này có tác dụng là bất kỳ khoảng trắng bổ sung nào được chèn vào đều được điền bằng các số 0 đứng đầu:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  std::string Fruit{
+    std::format("I have {:04} apples", 3)};
+  std::cout << Fruit;
+}
+```
+
+Kết quả nhận được
+
+```bash
+I have 0003 apples
+```
+
+**Left, Center, and Right Alignment**
+
+Chúng ta có thể thêm tiền tố cho chỉ định chiều rộng của mình bằng một ký tự bổ sung, chỉ định cách giá trị của chúng ta sẽ được căn chỉnh trong chiều rộng đó.
+
+- `<` biểu thị căn trái
+- `^` biểu thị căn giữa
+- `>` biểu thị căn phải
+
+Ví dụ, nếu chúng ta muốn chiều rộng trường của mình là 12 khoảng trắng và để giá trị của chúng ta được căn giữa trong khoảng trắng đó, chỗ giữ chỗ của chúng ta sẽ là {:^12}
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+	std::string Alignment{std::format("| {:^12} |","Center")};
+	std::cout << Alignment;
+}
+```
+
+Ví dụ sau đây cho thấy tác dụng của ba tùy chọn căn chỉnh:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+	std::string Alignment{
+		std::format("| {:<12} |\n| {:^12} |\n| {:>12} |",
+			"Left", "Center", "Right"
+		)};
+	std::cout << Alignment;
+}
+```
+
+Chúng ta cũng có thể đặt một ký tự trước mũi tên căn chỉnh, chỉ rõ chúng ta muốn điền vào khoảng trống bổ sung nào. Dưới đây, chúng ta điền vào khoảng trống bằng `-` ký tự:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  std::string Alignment{
+    std::format(
+		"| {:-<12} |\n| {:-^12} |\n| {:->12} |",
+		"Left", "Center", "Right")};
+	std::cout << Alignment;
+}
+```
+
+```bash
+| Left-------- |
+| ---Center--- |
+| -------Right |
+```
+
+**Float Precision**
+
+Yêu cầu định dạng phổ biến nhất khi làm việc với số dấu phẩy động là đặt mức độ chính xác của chúng.
+
+Điều này được thực hiện bằng cách sử dụng dấu . theo sau là số chữ số có nghĩa mà chúng ta muốn đưa vào chuỗi kết quả:
+
+```C++
+#include <format>
+#include <iostream>
+
+int main(){
+  float Pi{3.141592};
+  std::cout
+    << std::format("Pi: {:.1}", Pi)
+    << std::format("\nPi: {:.3}", Pi)
+    << std::format("\nPi: {:.5}", Pi);
+}
+```
+
+Bên dưới, chúng tôi đã kết hợp điều này với `đối số chiều rộng (8)` cùng với căn chỉnh bên phải bằng cách sử dụng `>`, với bất kỳ khoảng trống thừa nào được điền bằng ký tự `-`:
+
+```c++
+#include <format>
+#include <iostream>
+
+int main(){
+  float Pi{3.141592};
+  std::cout
+    << std::format("Pi: {:->8.1}", Pi)
+    << std::format("\nPi: {:->8.3}", Pi)
+    << std::format("\nPi: {:->8.5}", Pi);
+}
+```
+
+Kết quả trên màn hình sẽ là
+
+```bash
+Pi: -------3
+Pi: ----3.14
+Pi: --3.1416
+```
